@@ -1,12 +1,18 @@
+Feature: Login
+
 Background: 
-Scenario: Given User registrated and is already logged in with e-mail 
+    Given I am on the Account page
 
-
-Scenario: User does the login into the app
-    Given I click on the login button
-    Then I can see Loginto you account page
-    And I can enter my e-mail account
-    Then Send login link button is displayed as enable and another window is displayed with confirmation that an email with a link was sent 
+Scenario: Login screen
+    Given I click on Login
+    Then the facebook login button should be visible
+    And the regular login button should be visible
+    When I click login link button
+    Then I should see login link confirmation message
+    Then I can see Login page
+    When I enter my e-mail account
+    And I enter my password
+    When I click Submit
 
 Scenario: User does receives link at email for Login at app 
     Given I click on the link "log in to TicketSwap"
@@ -15,14 +21,11 @@ Scenario: User does receives link at email for Login at app
 
 Scenario: User is able to search for a ticket on Home page 
     Given I click at Home page tab
-    Then I can see the search field
-    And I am able to write in the Search field 
-    Then I should be able to find the ticket option 
-
+    Then I search for a ticket
+    Then I should see valid selection of tickets in search results
 
 Scenario: User is able to logout from the app 
     Given I click on Account tab 
-    Then I am able to see the Logout tab
-    And by clicking on the Logout tab  
-    Then I am able to logout from the app and I can see the Login tab there 
+    When I click on the Logout tab 
+    Then I can see the Login tab there 
 
